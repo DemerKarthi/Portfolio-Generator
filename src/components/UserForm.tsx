@@ -561,6 +561,7 @@ export function UserForm({ userData, setUserData }: UserFormProps) {
                       const newEntries = [...experienceEntries];
                       newEntries[index].position = e.target.value;
                       setExperienceEntries(newEntries);
+                      setUserData({ ...userData, experience: experienceEntries });                      
                     }}
                     className="flex-1 rounded-md bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500"
                   />

@@ -76,7 +76,9 @@ function generateStaticHTML(userData: UserData): string {
         <div class="space-y-6">
           ${experience.map(exp => `
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-              <h3 class="text-xl font-bold text-gray-800 dark:text-white">${exp}</h3>
+              <h3 class="text-xl font-bold text-gray-800 dark:text-white">${exp.position}</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">${exp.company}</p>
+              <h5 class="text-xl font-bold text-gray-800 dark:text-white">${exp.year}</h5>
             </div>
           `).join('')}
         </div>
@@ -88,7 +90,9 @@ function generateStaticHTML(userData: UserData): string {
         <div class="space-y-6">
           ${education.map(edu => `
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-              <h3 class="text-xl font-bold text-gray-800 dark:text-white">${edu}</h3>
+              <h3 class="text-xl font-bold text-gray-800 dark:text-white">${edu.degree}</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">${edu.institution}</p>
+              <h5 class="text-xl font-bold text-gray-800 dark:text-white">${edu.year}</h5>
             </div>
           `).join('')}
         </div>
@@ -97,14 +101,26 @@ function generateStaticHTML(userData: UserData): string {
       <!-- Social Links -->
       <section class="text-center">
         <div class="flex justify-center space-x-6">
-          ${socialLinks.github ? `
-            <a href="${socialLinks.github}" target="_blank" rel="noopener noreferrer" 
-               class="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill-rule="evenodd" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
-              </svg>
-            </a>
-          ` : ''}
+        ${socialLinks.github ? `
+          <a href="${socialLinks.github}" target="_blank" rel="noopener noreferrer"
+             class="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.52 1.02 1.52 1.02.9 1.52 2.36 1.08 2.94.82.09-.65.35-1.08.64-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.02-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.54 9.54 0 012.5-.34c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.63.7 1.02 1.6 1.02 2.69 0 3.85-2.34 4.69-4.58 4.94.36.31.69.92.69 1.86 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10.004 10.004 0 0022 12c0-5.52-4.48-10-10-10z"
+                clip-rule="evenodd"/>
+            </svg>
+          </a>
+        ` : ''}
+        
+        ${socialLinks.email ? `
+          <a href="mailto:${socialLinks.email}"
+             class="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2v.01L12 13l8-6.99V6l-8 6L4 6zm0 12h16V8l-8 6-8-6v10z"/>
+            </svg>
+          </a>
+        ` : ''}
+        
           ${socialLinks.linkedin ? `
             <a href="${socialLinks.linkedin}" target="_blank" rel="noopener noreferrer"
                class="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">

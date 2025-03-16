@@ -32,9 +32,7 @@ export interface Education {
 export interface Experience {
   company: string;
   position: string;
-  startDate: string;
-  endDate: string;
-  description: string;
+  year: string;
 }
 
 export interface SocialLinks {
